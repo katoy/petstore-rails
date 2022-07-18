@@ -1,12 +1,107 @@
-openapi: "3.0.3"
+openapi: 3.0.0
 info:
-  title: Petstore
-  version: "1.0.0"
+  license:
+    name: MIT
+  title: Swagger Petstore
+  description: ペットストアー
+  version: 1.0.0
+  contact:
+    name: API support
+    url: http://www.example.com/support
+    email: support@example.com
 servers:
-  - url: http://localhost:3000
+- url: http://petstore.swagger.io/v1
+tags:
+  - name: pets
+    description: ペット
+  - name: Users
+    description: ユーザー
 paths:
+  /pets:
+    get:
+      description: ペットの一覧を得る
+      operationId: listPets
+      parameters:
+      - description: How many items to return at one time (max 100)
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pets'
+          description: A paged array of pets
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              explode: false
+              schema:
+                type: string
+              style: simple
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: unexpected error
+      summary: ペットの一覧
+      tags:
+      - pets
+    post:
+      description: ペットを登録する
+      operationId: createPets
+      responses:
+        "201":
+          description: Null response
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: unexpected error
+      summary: ペットの登録
+      tags:
+      - pets
+  /pets/{petId}:
+    get:
+      description: 指定されたペットの詳細情報を得る
+      operationId: showPetById
+      parameters:
+      - description: The id of the pet to retrieve
+        explode: false
+        in: path
+        name: petId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+          description: Expected response to a valid request
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: unexpected error
+      summary: 指定されたペットの詳細情報
+      tags:
+      - pets
   /users:
     post:
+      description: ユーザー登録する
+      operationId: createUser
       tags:
         - Users
       summary: Create a User
@@ -30,6 +125,38 @@ paths:
                 $ref: "#/components/schemas/UserError"
 components:
   schemas:
+    Pet:
+      example:
+        name: name
+        id: 0
+        tag: tag
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        tag:
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    Pets:
+      items:
+        $ref: '#/components/schemas/Pet'
+      type: array
+    Error:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+      required:
+      - code
+      - message
+      type: object
     UserRequest:
       type: object
       required:
@@ -132,3 +259,5 @@ components:
         phone:
           - "is invalid"
           - "can't be blank"
+
+
