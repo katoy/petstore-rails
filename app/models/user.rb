@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# ユーザー
 class User < ApplicationRecord
   has_secure_password
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe '/users', type: :request do
@@ -12,7 +14,7 @@ RSpec.describe '/users', type: :request do
           first_name: 'John',
           last_name: 'Doe',
           email: 'john.doe@example.com',
-          phone: '03-1234-5678',
+          phone: '03-1234-5678'
         }, as: :json
 
         assert_request_schema_confirm
@@ -22,14 +24,17 @@ RSpec.describe '/users', type: :request do
 
     context 'when invalid' do
       before do
-        create(:user, {
-          username: 'johndoe',
-          password: 'p@ssw0rd',
-          first_name: 'John',
-          last_name: 'Doe',
-          email: 'john.doe@example.com',
-          phone: '03-1234-5678',
-        })
+        create(
+          :user,
+          {
+            username: 'johndoe',
+            password: 'p@ssw0rd',
+            first_name: 'John',
+            last_name: 'Doe',
+            email: 'john.doe@example.com',
+            phone: '03-1234-5678'
+          }
+        )
       end
 
       it 'does not create a user' do
@@ -39,7 +44,7 @@ RSpec.describe '/users', type: :request do
           first_name: '',
           last_name: '',
           email: 'john.doe@example.com',
-          phone: '',
+          phone: ''
         }, as: :json
 
         assert_request_schema_confirm

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_19_111502) do
+ActiveRecord::Schema.define(version: 2022_07_18_111502) do
+
+  create_table "pets", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "tag"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_pets_on_name", unique: true
+    t.index ["tag"], name: "index_pets_on_tag"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
