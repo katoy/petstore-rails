@@ -33,6 +33,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'rspec-openapi'
 end
 
 group :development do
