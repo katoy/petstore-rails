@@ -59,7 +59,11 @@ paths:
       operationId: createPets
       responses:
         "201":
-          description: Null response
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PetResponse"
         default:
           content:
             application/json:
@@ -157,6 +161,23 @@ components:
       - code
       - message
       type: object
+    PetResponse:
+      type: object
+      required:
+        - id
+        - name
+        - tag
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        tag:
+          nullable: true
+      example:
+        id: 1
+        name: 三毛猫
+        tag:
     UserRequest:
       type: object
       required:
