@@ -59,7 +59,7 @@ RSpec.describe '/pets', type: :request do
         call_api
 
         assert_request_schema_confirm
-        # assert_response_schema_confirm(200)
+        assert_response_schema_confirm(404)
         expect(response).to have_http_status '404'
         expect(json).to eq expect_json
       end
@@ -94,7 +94,7 @@ RSpec.describe '/pets', type: :request do
         call_api
 
         assert_request_schema_confirm
-        # assert_response_schema_confirm(422)
+        assert_response_schema_confirm(422)
         expect(response).to have_http_status '422'
         expect(json).to eq expect_json
       end
@@ -120,7 +120,7 @@ RSpec.describe '/pets', type: :request do
     context 'when duplicate' do
       let(:params) { { name: '秋田犬', tag: 'dog' } }
       let(:expect_json) do
-        { 'name' => [ 'has already been taken' ] }
+        { 'name' => ['has already been taken'] }
       end
 
       before { create(:pet, name: '秋田犬', tag: 'dog') }
@@ -129,7 +129,7 @@ RSpec.describe '/pets', type: :request do
         call_api
 
         assert_request_schema_confirm
-        # assert_response_schema_confirm(422)
+        assert_response_schema_confirm(422)
         expect(response).to have_http_status '422'
         expect(json).to eq expect_json
       end
@@ -147,7 +147,7 @@ RSpec.describe '/pets', type: :request do
         call_api
 
         assert_request_schema_confirm
-        # assert_response_schema_confirm(422)
+        assert_response_schema_confirm(422)
         expect(response).to have_http_status '422'
         expect(json).to eq expect_json
       end

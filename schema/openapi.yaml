@@ -64,6 +64,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/PetResponse"
+        '422':
+          description: creates a pet
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: array
+                    items:
+                      type: string
+              example:
+                name:
+                - has already been taken
         default:
           content:
             application/json:
@@ -93,6 +107,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Pet'
           description: Expected response to a valid request
+        '404':
+          description: is expected to eq {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              example: {}
         default:
           content:
             application/json:
