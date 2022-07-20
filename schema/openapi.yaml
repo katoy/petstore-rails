@@ -156,6 +156,7 @@ components:
         name: name
         id: 0
         tag: tag
+      additionalProperties: false
       properties:
         id:
           format: int64
@@ -238,6 +239,7 @@ components:
         - last_name
         - email
         - phone
+      additionalProperties: false
       properties:
         id:
           type: integer
