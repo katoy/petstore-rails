@@ -390,7 +390,7 @@ endif::internal-generation[]
 
 | tag
 | 
-| oas_any_type_not_mapped 
+| String 
 | 
 |  
 

@@ -5,7 +5,7 @@ title Swagger Petstore Schemas Diagram
 entity CreatePet201Response {
     id: Integer
     name: String
-    tag: OasAnyTypeNotMapped
+    tag: String
 }
 
 entity CreatePet422Response {

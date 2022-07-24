@@ -5,7 +5,10 @@ info:
   title: Swagger Petstore
   version: 1.0.0
 servers:
-- url: http://petstore.swagger.io/v1
+- description: localhost
+  url: http://localhost:3000
+- description: Production
+  url: http://petstore/v1
 paths:
   /pets:
     get:
@@ -207,7 +210,7 @@ components:
       example:
         name: name
         id: 0
-        tag: ""
+        tag: tag
       properties:
         id:
           type: integer
@@ -215,6 +218,7 @@ components:
           type: string
         tag:
           nullable: true
+          type: string
       type: object
     create_pet_422_response:
       properties:

@@ -2,7 +2,10 @@ openapi: "3.0.0"
 info:
   $ref: './info/index.yaml'
 servers:
-  - url: http://petstore.swagger.io/v1
+  - url: http://localhost:3000
+    description: localhost
+  - url: http://petstore/v1
+    description: Production
 paths:
   "/pets":
     post:
@@ -50,6 +53,7 @@ paths:
                   name:
                     type: string
                   tag:
+                    type: string
                     nullable: true
               example:
                 id: 1
