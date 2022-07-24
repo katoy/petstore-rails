@@ -3,10 +3,10 @@
 # スキーマ
 class SchemaController < ActionController::Base
   def openapi
-    render file: Rails.root.join('schema/openapi.yaml')
+    render file: Rails.root.join('dest/openapi/openapi.yaml')
   end
 
   def rapidoc
-    render file: Rails.root.join('schema/rapidoc.html')
+    render file: Rails.root.join('dest/index.html')
   end
 end

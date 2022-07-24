@@ -1,0 +1,302 @@
+openapi: 3.0.0
+info:
+  license:
+    name: MIT
+  title: Swagger Petstore
+  version: 1.0.0
+servers:
+- url: http://petstore.swagger.io/v1
+paths:
+  /pets:
+    get:
+      operationId: index_pets
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 1
+                name: 土佐犬
+                tag: Sunanda Devi
+              - id: 2
+                name: ペルシャ猫
+                tag: Nuptse
+              schema:
+                items:
+                  $ref: '#/components/schemas/index_pets_200_response_inner'
+                type: array
+          description: "is expected to eq [{\"id\"=>1, \"name\"=>\"土佐犬\", \"tag\"\
+            =>\"Sunanda Devi\"}, {\"id\"=>2, \"name\"=>\"ペルシャ猫\", \"tag\"=>\"Nuptse\"\
+            }]"
+      summary: index
+      tags:
+      - Pet
+    post:
+      operationId: create_pet
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: 芝犬
+              tag: 犬
+            schema:
+              $ref: '#/components/schemas/create_pet_request'
+      responses:
+        "201":
+          content:
+            application/json:
+              example:
+                id: 1
+                name: 三毛猫
+                tag: null
+              schema:
+                $ref: '#/components/schemas/create_pet_201_response'
+          description: "is expected to eq {\"id\"=>1, \"name\"=>\"三毛猫\", \"tag\"=>nil}"
+        "422":
+          content:
+            application/json:
+              example:
+                name:
+                - has already been taken
+              schema:
+                $ref: '#/components/schemas/create_pet_422_response'
+          description: does not create a pet
+      summary: create
+      tags:
+      - Pet
+  /pets/{id}:
+    get:
+      operationId: show_pet
+      parameters:
+      - example: 2
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 2
+                name: ペルシャ猫
+                tag: Dhaulagiri IV
+              schema:
+                $ref: '#/components/schemas/show_pet_200_response'
+          description: "is expected to eq {\"id\"=>2, \"name\"=>\"ペルシャ猫\", \"tag\"\
+            =>\"Dhaulagiri IV\"}"
+        "404":
+          content:
+            application/json:
+              example: {}
+              schema:
+                properties: {}
+                type: object
+          description: "is expected to eq {}"
+      summary: show
+      tags:
+      - Pet
+  /users:
+    post:
+      operationId: create_user
+      requestBody:
+        content:
+          application/json:
+            example:
+              username: johndoe
+              password: ""
+              first_name: ""
+              last_name: ""
+              email: john.doe@example.com
+              phone: ""
+            schema:
+              $ref: '#/components/schemas/create_user_request'
+      responses:
+        "201":
+          content:
+            application/json:
+              example:
+                id: 1
+                username: johndoe
+                first_name: John
+                last_name: Doe
+                email: john.doe@example.com
+                phone: "0312345678"
+              schema:
+                $ref: '#/components/schemas/create_user_201_response'
+          description: creates a user
+        "422":
+          content:
+            application/json:
+              example:
+                password:
+                - can't be blank
+                - is too short (minimum is 6 characters)
+                username:
+                - has already been taken
+                first_name:
+                - can't be blank
+                last_name:
+                - can't be blank
+                email:
+                - has already been taken
+                phone:
+                - is invalid
+                - can't be blank
+              schema:
+                $ref: '#/components/schemas/create_user_422_response'
+          description: does not create a user
+      summary: create
+      tags:
+      - User
+components:
+  schemas:
+    Pet:
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        tag:
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    Pets:
+      items:
+        $ref: '#/components/schemas/Pet'
+      type: array
+    Error:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+      required:
+      - code
+      - message
+      type: object
+    index_pets_200_response_inner:
+      example:
+        name: name
+        id: 0
+        tag: tag
+      nullable: true
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        tag:
+          type: string
+      type: object
+    create_pet_request:
+      properties:
+        name:
+          type: string
+        tag:
+          type: string
+      type: object
+    create_pet_201_response:
+      example:
+        name: name
+        id: 0
+        tag: ""
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        tag:
+          nullable: true
+      type: object
+    create_pet_422_response:
+      properties:
+        name:
+          items:
+            type: string
+          type: array
+      type: object
+    show_pet_200_response:
+      example:
+        name: name
+        id: 0
+        tag: tag
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        tag:
+          type: string
+      type: object
+    create_user_request:
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+      type: object
+    create_user_201_response:
+      example:
+        phone: phone
+        last_name: last_name
+        id: 0
+        first_name: first_name
+        email: email
+        username: username
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+      type: object
+    create_user_422_response:
+      properties:
+        password:
+          items:
+            type: string
+          type: array
+        username:
+          items:
+            type: string
+          type: array
+        first_name:
+          items:
+            type: string
+          type: array
+        last_name:
+          items:
+            type: string
+          type: array
+        email:
+          items:
+            type: string
+          type: array
+        phone:
+          items:
+            type: string
+          type: array
+      type: object
