@@ -44,5 +44,16 @@ stoplight で dest/openapi/openapi,.yaml を読み込むと、 preview 画面か
 > 例えば他ユーザの本名や IP アドレスが意図せず API レスポンスに含まれてしまうと大問題になりえます。
 こうした挙動を防ぐには、レスポンス定義に additionalProperties: false を指定します。
 
+- <https://zenn.dev/offers/articles/20220530-openapi_stoplight>
+【OpenAPI】Stoplight Studioを活用して快適＆高速にAPI定義を書く方法
+ (mock の起動方法も記載されている)
+ 例：  npx prism mock -d dest/openapi/openapi.yaml -p 3000
+
+oenapi ファイルのマージは、この記事にあるように husky を使って
+Git hooks で pre-commit 時に自動生成するほうがよいかもしれない。
+
+- <https://engineers.ntt.com/entry/2021/12/03/094953>
+  OpenAPI Specification ドリブンな開発事例とそれを支えるツール
+
 - <https://github.com/cafedomancer/petstore>
   fork 元
