@@ -4,6 +4,8 @@ info:
 servers:
   - url: http://localhost:3000
     description: localhost
+  - url: http://localhost:10083
+    description: Mock
   - url: http://petstore/v1
     description: Production
 paths:
@@ -12,7 +14,7 @@ paths:
       summary: create
       operationId: create_pet
       tags:
-      - Pet
+        - Pet
       requestBody:
         content:
           application/json:

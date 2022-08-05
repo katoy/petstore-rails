@@ -30,7 +30,19 @@ OPENAPI=1 rspec spec/requests/pets_spec.rb:87 などとするの 該当部分の
 
 ### stoplight の利用
 
-stoplight で dest/openapi/openapi,.yaml を読み込むと、 preview 画面から [try_it] で 実際の api 呼び出しを試すことができます。
+stoplight で dest/openapi/openapi.yaml を読み込むと、 preview 画面から [try_it] で 実際の api 呼び出しを試すことができます。
+### swagger ツール
+
+- http://localhost:10081
+  Swagger Editor が起動します。
+
+- http://localhost:10082
+  Swagger UI が起動します。
+
+- http://localhost:10083
+  prisme による Mock が http://localhost:10083 で起動しています。
+  http://localhost:10083/pets などを curel, web プラウザでアクセスしてみてください。
+  Swagger UI の画面から サーバーを mock にすれば、[try-it] で 呼び出すこともできます。
 
 ### TODO
 
@@ -65,6 +77,9 @@ Git hooks で pre-commit 時に自動生成するほうがよいかもしれな�
 
 - https://qiita.com/nakazawaken1/items/f442e8c25f3025f8147f
   Docker上のRuby on Rails 6をVisual Studio Codeでデバッグするまでの手順
+
+- <https://qiita.com/KWS_0901/items/52793bbd22bbbe08c3eb>
+  Docker + Swagger + Stoplight Prismを用いたAPI仕様書作成環境+APIモックサーバーの構築方法 メモ
 
 - <https://github.com/cafedomancer/petstore>
   fork 元

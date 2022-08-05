@@ -29,14 +29,26 @@ services:
     volumes:
       - ./dest/merged.yaml:/merged.yaml
     entrypoint: /usr/local/bin/apisprout /merged.yaml --watch
+
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    ports:
+      - "10081:8080"
   swagger-ui:
     image: swaggerapi/swagger-ui
     ports:
-      - 8011:8080
+      - "10082:8080"
     volumes:
       - ./dest/merged.yaml:/usr/share/nginx/html/merged.yaml
     environment:
       API_URL: merged.yaml
+  swagger-api:
+    image: stoplight/prism:3
+    ports:
+      - "10083:4010"
+    command: mock -h 0.0.0.0 /dest/openapi/openapi.yaml
+    volumes:
+      - ./dest:/dest
   redoc:
     image: redocly/redoc
     ports:
