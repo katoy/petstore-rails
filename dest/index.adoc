@@ -675,6 +675,37 @@ endif::internal-generation[]
 |===
 
 
+[#PetsInner]
+=== _PetsInner_ 
+
+
+
+[.fields-PetsInner]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| id
+| X
+| Long 
+| 
+| int64 
+
+| name
+| X
+| String 
+| 
+|  
+
+| tag
+| 
+| String 
+| 
+|  
+
+|===
+
+
 [#ShowPet200Response]
 === _ShowPet200Response_ 
 

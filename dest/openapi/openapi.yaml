@@ -127,7 +127,7 @@ paths:
                 first_name: John
                 last_name: Doe
                 email: john.doe@example.com
-                phone: "0312345678"
+                phone: 3.12345678E8
               schema:
                 $ref: '#/components/schemas/create_user_201_response'
           description: creates a user
@@ -172,7 +172,7 @@ components:
       type: object
     Pets:
       items:
-        $ref: '#/components/schemas/Pet'
+        $ref: '#/components/schemas/Pets_inner'
       type: array
     Error:
       properties:
@@ -303,4 +303,17 @@ components:
           items:
             type: string
           type: array
+      type: object
+    Pets_inner:
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        tag:
+          type: string
+      required:
+      - id
+      - name
       type: object

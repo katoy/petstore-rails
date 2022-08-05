@@ -61,6 +61,12 @@ entity Pet {
     tag: String
 }
 
+entity PetsInner {
+    * id: Long
+    * name: String
+    tag: String
+}
+
 entity ShowPet200Response {
     id: Integer
     name: String
