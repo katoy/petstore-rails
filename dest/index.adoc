@@ -37,7 +37,7 @@ create
 
 ===== Description
 
-
+ペットを登録する。
 
 
 // markup not found, no include::{specDir}api/v1/pets/POST/spec.adoc[opts=optional]
@@ -124,7 +124,7 @@ index
 
 ===== Description
 
-
+ペットを登録する。
 
 
 // markup not found, no include::{specDir}api/v1/pets/GET/spec.adoc[opts=optional]
@@ -193,7 +193,7 @@ show
 
 ===== Description
 
-
+ペットの情報を得る。
 
 
 // markup not found, no include::{specDir}api/v1/pets/\{id\}/GET/spec.adoc[opts=optional]
@@ -284,7 +284,7 @@ create
 
 ===== Description
 
-
+ユーザーを登録する。
 
 
 // markup not found, no include::{specDir}api/v1/users/POST/spec.adoc[opts=optional]
@@ -427,15 +427,15 @@ endif::internal-generation[]
 | Field Name| Required| Type| Description| Format
 
 | name
-| 
+| X
 | String 
-| 
+| 名称
 |  
 
 | tag
 | 
 | String 
-| 
+| タグ
 |  
 
 |===
@@ -444,7 +444,7 @@ endif::internal-generation[]
 [#CreateUser201Response]
 === _CreateUser201Response_ 
 
-
+ユーザー登録情報
 
 [.fields-CreateUser201Response]
 [cols="2,1,2,4,1"]
@@ -454,37 +454,37 @@ endif::internal-generation[]
 | id
 | 
 | Integer 
-| 
+| ユーザー id
 |  
 
 | username
 | 
 | String 
-| 
+| アカウント名
 |  
 
 | first_name
 | 
 | String 
-| 
+| 名前
 |  
 
 | last_name
 | 
 | String 
-| 
+| 苗字
 |  
 
 | email
 | 
 | String 
-| 
+| メールアドレス
 |  
 
 | phone
 | 
 | String 
-| 
+| 電話番号
 |  
 
 |===
@@ -542,7 +542,7 @@ endif::internal-generation[]
 [#CreateUserRequest]
 === _CreateUserRequest_ 
 
-
+ユーザー登録情報
 
 [.fields-CreateUserRequest]
 [cols="2,1,2,4,1"]
@@ -552,37 +552,37 @@ endif::internal-generation[]
 | username
 | 
 | String 
-| 
+| アカウント名
 |  
 
 | password
 | 
 | String 
-| 
+| パスワード
 |  
 
 | first_name
 | 
 | String 
-| 
+| 名前
 |  
 
 | last_name
 | 
 | String 
-| 
+| 苗字
 |  
 
 | email
 | 
 | String 
-| 
+| メールアドレス
 |  
 
 | phone
 | 
 | String 
-| 
+| 電話番号
 |  
 
 |===
@@ -591,7 +591,7 @@ endif::internal-generation[]
 [#Error]
 === _Error_ 
 
-
+エラー情報
 
 [.fields-Error]
 [cols="2,1,2,4,1"]
@@ -601,13 +601,13 @@ endif::internal-generation[]
 | code
 | X
 | Integer 
-| 
+| コード
 | int32 
 
 | message
 | X
 | String 
-| 
+| メッセージ
 |  
 
 |===
@@ -624,21 +624,21 @@ endif::internal-generation[]
 | Field Name| Required| Type| Description| Format
 
 | id
-| 
+| X
 | Integer 
-| 
+| ペットの id
 |  
 
 | name
-| 
+| X
 | String 
-| 
+| 名称
 |  
 
 | tag
 | 
 | String 
-| 
+| タグ
 |  
 
 |===
@@ -647,7 +647,7 @@ endif::internal-generation[]
 [#Pet]
 === _Pet_ 
 
-
+ペットの詳細
 
 [.fields-Pet]
 [cols="2,1,2,4,1"]
@@ -657,19 +657,19 @@ endif::internal-generation[]
 | id
 | X
 | Long 
-| 
+| ペットの id
 | int64 
 
 | name
 | X
 | String 
-| 
+| 名称
 |  
 
 | tag
 | 
 | String 
-| 
+| タグ
 |  
 
 |===
@@ -686,21 +686,21 @@ endif::internal-generation[]
 | Field Name| Required| Type| Description| Format
 
 | id
-| 
+| X
 | Integer 
-| 
+| ペットの id
 |  
 
 | name
-| 
+| X
 | String 
-| 
+| 名称
 |  
 
 | tag
 | 
 | String 
-| 
+| タグ
 |  
 
 |===

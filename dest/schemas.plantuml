@@ -13,7 +13,7 @@ entity CreatePet422Response {
 }
 
 entity CreatePetRequest {
-    name: String
+    * name: String
     tag: String
 }
 
@@ -50,8 +50,8 @@ entity Error {
 }
 
 entity IndexPets200ResponseInner {
-    id: Integer
-    name: String
+    * id: Integer
+    * name: String
     tag: String
 }
 
@@ -62,8 +62,8 @@ entity Pet {
 }
 
 entity ShowPet200Response {
-    id: Integer
-    name: String
+    * id: Integer
+    * name: String
     tag: String
 }
 

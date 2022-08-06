@@ -11,9 +11,13 @@ servers:
   url: http://localhost:10083
 - description: Production
   url: http://petstore/v1
+tags:
+- name: Pet
+- name: User
 paths:
   /api/v1/pets:
     get:
+      description: ペットを登録する。
       operationId: index_pets
       responses:
         "200":
@@ -37,6 +41,7 @@ paths:
       tags:
       - Pet
     post:
+      description: ペットを登録する。
       operationId: create_pet
       requestBody:
         content:
@@ -71,6 +76,7 @@ paths:
       - Pet
   /api/v1/pets/{id}:
     get:
+      description: ペットの情報を得る。
       operationId: show_pet
       parameters:
       - example: 2
@@ -106,6 +112,7 @@ paths:
       - Pet
   /api/v1/users:
     post:
+      description: ユーザーを登録する。
       operationId: create_user
       requestBody:
         content:
@@ -160,28 +167,36 @@ paths:
 components:
   schemas:
     Pet:
+      description: ペットの詳細
       properties:
         id:
+          description: ペットの id
           format: int64
           type: integer
         name:
+          description: 名称
           type: string
         tag:
+          description: タグ
           type: string
       required:
       - id
       - name
       type: object
     Pets:
+      description: ペットの一覧 (id の昇順)
       items:
         $ref: '#/components/schemas/Pet'
       type: array
     Error:
+      description: エラー情報
       properties:
         code:
+          description: コード
           format: int32
           type: integer
         message:
+          description: メッセージ
           type: string
       required:
       - code
@@ -195,18 +210,28 @@ components:
       nullable: true
       properties:
         id:
+          description: ペットの id
           type: integer
         name:
+          description: 名称
           type: string
         tag:
+          description: タグ
           type: string
+      required:
+      - id
+      - name
       type: object
     create_pet_request:
       properties:
         name:
+          description: 名称
           type: string
         tag:
+          description: タグ
           type: string
+      required:
+      - name
       type: object
     create_pet_201_response:
       example:
@@ -236,28 +261,42 @@ components:
         tag: tag
       properties:
         id:
+          description: ペットの id
           type: integer
         name:
+          description: 名称
           type: string
         tag:
+          description: タグ
           type: string
+      required:
+      - id
+      - name
       type: object
     create_user_request:
+      description: ユーザー登録情報
       properties:
         username:
+          description: アカウント名
           type: string
         password:
+          description: パスワード
           type: string
         first_name:
+          description: 名前
           type: string
         last_name:
+          description: 苗字
           type: string
         email:
+          description: メールアドレス
           type: string
         phone:
+          description: 電話番号
           type: string
       type: object
     create_user_201_response:
+      description: ユーザー登録情報
       example:
         phone: phone
         last_name: last_name
@@ -267,16 +306,22 @@ components:
         username: username
       properties:
         id:
+          description: ユーザー id
           type: integer
         username:
+          description: アカウント名
           type: string
         first_name:
+          description: 名前
           type: string
         last_name:
+          description: 苗字
           type: string
         email:
+          description: メールアドレス
           type: string
         phone:
+          description: 電話番号
           type: string
       type: object
     create_user_422_response:
