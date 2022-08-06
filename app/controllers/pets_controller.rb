@@ -9,7 +9,7 @@ class PetsController < ApplicationController
 
   def show
     id = params[:id]
-    pet = Pet.where(id: id)[0]
+    pet = Pet.where(id:)[0]
     if pet
       render json: PetSerializer.new(pet), status: :ok
     else

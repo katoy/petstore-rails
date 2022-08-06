@@ -2,7 +2,7 @@
 
 module Api
   module V1
-  # ユーザー
+    # ユーザー
     class UsersController < ApplicationController
       def create
         @user = User.new(user_params)

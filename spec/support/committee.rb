@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   config.add_setting :committee_options
   config.committee_options = {

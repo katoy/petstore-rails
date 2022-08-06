@@ -84,7 +84,7 @@ RSpec.describe '/pets', type: :request do
   end
 
   describe 'POST /pets/' do
-    subject(:call_api) { post api_v1_pets_path, params: params, as: :json }
+    subject(:call_api) { post api_v1_pets_path, params:, as: :json }
 
     context 'no name' do
       let(:params) { { name: '', tag: 'dog' } }
