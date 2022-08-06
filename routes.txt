@@ -3,6 +3,10 @@
                                     pets GET    /pets(.:format)                                                                                   pets#index
                                          POST   /pets(.:format)                                                                                   pets#create
                                      pet GET    /pets/:id(.:format)                                                                               pets#show
+                            api_v1_users POST   /api/v1/users(.:format)                                                                           api/v1/users#create {:format=>/json/}
+                             api_v1_pets GET    /api/v1/pets(.:format)                                                                            api/v1/pets#index {:format=>/json/}
+                                         POST   /api/v1/pets(.:format)                                                                            api/v1/pets#create {:format=>/json/}
+                              api_v1_pet GET    /api/v1/pets/:id(.:format)                                                                        api/v1/pets#show {:format=>/json/}
                                          GET    /openapi.yaml(.:format)                                                                           schema#openapi
                                          GET    /rapidoc.html(.:format)                                                                           schema#rapidoc
            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create

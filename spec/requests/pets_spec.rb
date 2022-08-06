@@ -8,7 +8,7 @@ RSpec.describe '/pets', type: :request do
   let(:json) { JSON.parse(response.body) }
 
   describe 'GET /pets' do
-    subject(:call_api) { get pets_path, as: :json }
+    subject(:call_api) { get api_v1_pets_path, as: :json }
 
     context 'empty' do
       it do
@@ -44,7 +44,7 @@ RSpec.describe '/pets', type: :request do
   end
 
   describe 'GET /pets/{id}' do
-    subject(:call_api) { get pet_path(id), as: :json }
+    subject(:call_api) { get api_v1_pet_path(id), as: :json }
 
     before do
       create(:pet, name: '土佐犬')
@@ -84,7 +84,7 @@ RSpec.describe '/pets', type: :request do
   end
 
   describe 'POST /pets/' do
-    subject(:call_api) { post pets_path, params: params, as: :json }
+    subject(:call_api) { post api_v1_pets_path, params: params, as: :json }
 
     context 'no name' do
       let(:params) { { name: '', tag: 'dog' } }

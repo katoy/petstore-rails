@@ -9,7 +9,7 @@ servers:
   - url: http://petstore/v1
     description: Production
 paths:
-  "/pets":
+  "/api/v1/pets":
     post:
       summary: create
       operationId: create_pet
@@ -91,7 +91,7 @@ paths:
               - id: 2
                 name: ペルシャ猫
                 tag: Nuptse
-  "/pets/{id}":
+  "/api/v1/pets/{id}":
     get:
       summary: show
       operationId: show_pet
@@ -131,7 +131,7 @@ paths:
                 id: 2
                 name: ペルシャ猫
                 tag: Dhaulagiri IV
-  "/users":
+  "/api/v1/users":
     post:
       summary: create
       operationId: create_user

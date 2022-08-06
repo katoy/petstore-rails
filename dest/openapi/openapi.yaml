@@ -12,7 +12,7 @@ servers:
 - description: Production
   url: http://petstore/v1
 paths:
-  /pets:
+  /api/v1/pets:
     get:
       operationId: index_pets
       responses:
@@ -69,7 +69,7 @@ paths:
       summary: create
       tags:
       - Pet
-  /pets/{id}:
+  /api/v1/pets/{id}:
     get:
       operationId: show_pet
       parameters:
@@ -104,7 +104,7 @@ paths:
       summary: show
       tags:
       - Pet
-  /users:
+  /api/v1/users:
     post:
       operationId: create_user
       requestBody:

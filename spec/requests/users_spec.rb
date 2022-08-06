@@ -10,7 +10,7 @@ RSpec.describe '/users', type: :request do
   describe 'POST /users' do
     context 'when valid' do
       it 'creates a user' do
-        post users_url, params: {
+        post api_v1_users_url, params: {
           username: 'johndoe',
           password: 'p@ssw0rd',
           first_name: 'John',
@@ -64,7 +64,7 @@ RSpec.describe '/users', type: :request do
       end
 
       it 'does not create a user' do
-        post users_url, params: {
+        post api_v1_users_url, params: {
           username: 'johndoe',
           password: '',
           first_name: '',
