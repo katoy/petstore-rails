@@ -4,17 +4,13 @@
 class PetsController < ApplicationController
   def index
     pets = Pet.all.order(id: :ASC)
-    render json: PetSerializer.new(pets), status: :ok
+    render json: { pets: }
   end
 
   def show
     id = params[:id]
     pet = Pet.where(id:)[0]
-    if pet
-      render json: PetSerializer.new(pet), status: :ok
-    else
-      render json: {}, status: :not_found
-    end
+    render json: { pet: }
   end
 
   def create

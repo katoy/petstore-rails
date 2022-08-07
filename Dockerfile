@@ -1,4 +1,4 @@
-FROM ruby:3.1.2-alpine3.15
+FROM ruby:3.1.2-alpine3.16
 
 ## See https://www.karakaram.com/rails6-and-mysql-with-alpine-linux-based-docker-image/
 
@@ -12,6 +12,7 @@ RUN apk update \
     && apk add --no-cache --virtual=.build-deps \
     build-base \
     && apk add --no-cache gmp-dev \
+    chromium-chromedriver \
     sqlite-dev \
     tzdata \
     nodejs~=16 \

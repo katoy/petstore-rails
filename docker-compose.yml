@@ -22,6 +22,12 @@ services:
   #    MYSQL_ROOT_PASSWORD: password
 # volumes:
 #  db-volume:
+  selenium_chrome:
+    # image: seleniarm/standalone-chromium
+    image: seleniarm/standalone-chromium:latest
+    logging:
+      driver: none
+
   api-mock:
     image: danielgtaylor/apisprout
     ports:
